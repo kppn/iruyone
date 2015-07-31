@@ -1,0 +1,128 @@
+<html>
+
+<head>
+  <link data-turbolinks-track="true" href="custom.css" media="all" rel="stylesheet" />
+  <link rel="stylesheet" type="text/css" href="custom.css">
+</head>
+
+
+<body>
+
+
+<header id="navbar" class="navbar navbar-fixed-top navbar-inverse navbar-green">
+
+  <div class="container">
+  
+    <div id="logo-box">
+      <a id="logo" href="/">いるよね.com(仮)</a>
+    </div>
+    
+    <div class="navbar-collapse collapse">
+      <a href="#" class="botton-irai">
+        <sup class="nav-new">
+          依頼する
+        </sup>
+      </a>
+      <a href="#" class="botton-irai">
+        <sup class="nav-new">
+          依頼を見る
+        </sup>
+      </a>
+    </div>
+    
+    <div class="searchBox">
+      <form action="" method="get" accept-charet="utf-8">
+        <input type="text" name="search" placeholder="依頼を検索" id="search-text-box"></input>
+          <span>
+            <button type="submit" class="btn">
+              検索
+            </button>
+          </span>
+      </form>
+    </div>
+
+    <% if login? %>
+
+      <div class="logined">
+        <ul id="menu-list" >
+          <li>
+	    <a>
+              <sup class="nav-new"> <%= current_user.name %> </sup>
+
+	      <ul class="dropdown">
+	        <li><a href="/logout">logout</a></li>
+	        <li><a href="#">dummy</a></li>
+	      </ul>
+	    </a>
+          </li>
+        </ul>
+
+      </div>
+
+    <% else %>
+
+      <div class="login">
+        <a href="/login" class="botton-login">
+          <sup class="nav-new">
+            ログイン
+          </sup>
+        </a>
+      </div>
+
+    <% end %>
+
+  </div>
+</header>
+
+
+<div class="item-title">
+  バゲットの売り上げがイマイチ！
+</div>
+<div class="item-image">
+  <img src="19309539.jpg" />
+</div>
+
+<div class="description">
+東京都内のパン屋です。<br>
+当店はバゲットにこだわっており、小麦粉や焼き方もちょっと他では真似できないと自負しています。しかし思ったほど売れていません。<br>
+これまでPOPに『当店イチオシ！』など付けてみましたが、あまり効果はありませんでした。<br>
+<br>
+値段は適正に抑えているつもりです。<br>
+なぜ売れないのでしょうか。<br>
+</div>
+
+<div class="order-attribute">
+  <div class="order-attribute-price">
+    商品価格帯<br>
+    270円
+  </div>
+  <div class="order-attribute-target">
+    主なターゲット<br>
+    女性20代 ～ 60代
+  </div>
+</div>
+
+<div>
+  <div class="contribution-status">
+  </div>
+
+  <div class="contribution">
+    <div class="contribution-thread">
+      <div class="contribution-by-contributer">
+      <div>
+      <div class="contribution-response">
+      </div>
+  
+      <a href="#" class="contribute-response">コメントを投稿</a>
+    </div>
+
+    <div class="contribution-image">
+    </div>
+  </div>
+</div>
+
+
+
+</body>
+</html>
+

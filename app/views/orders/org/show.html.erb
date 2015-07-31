@@ -1,0 +1,55 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Client:</strong>
+  <%= @order.client %>
+</p>
+
+<p>
+  <strong>Status:</strong>
+  <%= @order.status %>
+</p>
+
+<p>
+  <strong>Order message:</strong>
+  <%= @order.order_message %>
+</p>
+
+<p>
+  <strong>Payment:</strong>
+  <%= @order.payment %>
+</p>
+
+<p>
+  <strong>Num comment:</strong>
+  <%= @order.num_comment %>
+</p>
+
+<p>
+  <strong>Num view:</strong>
+  <%= @order.num_view %>
+</p>
+
+<p>
+  <strong>Num pop:</strong>
+  <%= @order.num_pop %>
+</p>
+
+<p>
+  <strong>Order date:</strong>
+  <%= @order.order_date %>
+</p>
+
+<p>
+  <strong>Close date:</strong>
+  <%= @order.close_date %>
+</p>
+
+<p>
+  <strong>List image name:</strong>
+  <%= @order.list_image_name %>
+</p>
+
+<%= link_to 'Edit', edit_order_path(@order) %> |
+<%= link_to 'Back', orders_path %>
+

@@ -1,0 +1,115 @@
+<head>
+  <link data-turbolinks-track="true" href="custom.css" media="all" rel="stylesheet" />
+  <link rel="stylesheet" type="text/css" href="custom.css">
+</head>
+
+<body>
+
+<header id="navbar" class="navbar navbar-fixed-top navbar-inverse navbar-green">
+
+  <div class="container">
+    <div id="logo-box">
+      <a id="logo" href="/">いるよね.com(仮)</a>
+    </div>
+  </div>
+
+</header>
+
+
+<h1>
+<% if login? %>
+ログイン
+<% else %>
+ログインしてない
+<% end %>
+</h1>
+
+<div class="login-input">
+
+  <div id="hp-title-login">
+    <div id="hp-title-login-message">
+      SNSアカウントでログイン<br>
+    </div>
+    
+    <ul class="social-login">
+      <li>
+        <a href="#">
+          <div id="social-login-list">
+  	      <%= image_tag 'system_logo_facebook.png', size: '30x30' %>
+  	      Facebook
+          </div>
+        </a> 
+      </li>
+      <li>
+        <a href="#">
+          <div id="social-login-list">
+  	      <%= image_tag 'system_logo_twitter.png', size: '30x30' %>
+  	      Twitter
+          </div>
+        </a> 
+      </li>
+      <li>
+        <a href="#">
+          <div id="social-login-list">
+  	      <%= image_tag 'system_logo_google.png', size: '30x30' %>
+  	      Google
+          </div>
+        </a> 
+      </li>
+    </ul>
+    
+  </div>
+
+  <div id="hp-title-login">
+    <div id="hp-title-login-message">
+      メールアドレスでログイン<br>
+    </div>
+    <div>
+      <%= form_for(:session, url: sessions_path) do |f| %>
+    
+        <%= f.label :email %>
+        <%= f.text_field :email %>
+	<br>
+    
+        <%= f.label :password %>
+        <%= f.password_field :password %>
+	<br>
+    
+        <%= f.submit "Sign in", class: "btn btn-large btn-primary" %>
+      <% end %>
+    
+      <p>New user? <%= link_to "Sign up now!", 'create_user.html' %></p>
+    </div>
+  </div>
+
+</div>
+
+
+
+
+<div class="footer">
+  <div>
+    <div class="question">
+      問い合わせ<br>
+      <ul class="footer-ul">
+        <li> <a href="#">利用規約</a> </li>
+        <li> <a href="#">個人情報の取り扱いについて</a> </li>
+        <li> <a href="#">問い合わせ</a> </li>
+        <li> <a href="#">運営会社</a> </li>
+      </ul>
+    </div>
+    <div class="question">
+      このサイトについて<br>
+      <ul class="footer-ul">
+        <li> <a href="#">いるよね.comとは</a> </li>
+        <li> <a href="#">よくある質問</a> </li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>
+
+
+

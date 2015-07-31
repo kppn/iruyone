@@ -1,0 +1,25 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  client: MyString
+  status: 1
+  order_message: MyString
+  payment: 1
+  num_comment: 1
+  num_view: 1
+  num_pop: 1
+  order_date: 2015-07-03 14:14:09
+  close_date: 2015-07-03 14:14:09
+  list_image_name: MyString
+
+two:
+  client: MyString
+  status: 1
+  order_message: MyString
+  payment: 1
+  num_comment: 1
+  num_view: 1
+  num_pop: 1
+  order_date: 2015-07-03 14:14:09
+  close_date: 2015-07-03 14:14:09
+  list_image_name: MyString

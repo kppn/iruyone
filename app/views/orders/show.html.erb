@@ -1,0 +1,288 @@
+
+<header id="navbar" class="navbar navbar-fixed-top navbar-inverse navbar-green">
+
+  <div class="container">
+  
+    <div id="logo-box">
+      <a id="logo" href="/">いるよね.com(仮)</a>
+    </div>
+    
+    <div class="navbar-collapse collapse">
+      <a href="#" class="botton-irai">
+        <sup class="nav-new">
+          依頼する
+        </sup>
+      </a>
+      <a href="#" class="botton-irai">
+        <sup class="nav-new">
+          依頼を見る
+        </sup>
+      </a>
+    </div>
+    
+    <div class="searchBox">
+      <form action="" method="get" accept-charet="utf-8">
+        <input type="text" name="search" placeholder="依頼を検索" id="search-text-box"></input>
+          <span>
+            <button type="submit" class="btn">
+              検索
+            </button>
+          </span>
+      </form>
+    </div>
+
+    <% if login? %>
+
+      <div class="logined">
+        <ul id="menu-list" >
+          <li>
+	    <a>
+              <sup class="nav-new"> <%= current_user.name %> </sup>
+
+	      <ul class="dropdown">
+	        <li><a href="/logout">logout</a></li>
+	        <li><a href="#">dummy</a></li>
+	      </ul>
+	    </a>
+          </li>
+        </ul>
+
+      </div>
+
+    <% else %>
+
+      <div class="login">
+        <a href="/login" class="botton-login">
+          <sup class="nav-new">
+            ログイン
+          </sup>
+        </a>
+      </div>
+
+    <% end %>
+
+  </div>
+</header>
+
+
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Client:</strong>
+  <%= @order.client %>
+</p>
+
+<p>
+  <strong>Status:</strong>
+  <%= @order.status %>
+</p>
+
+<p>
+  <strong>Order message:</strong>
+  <%= @order.order_message %>
+</p>
+
+<p>
+  <strong>Payment:</strong>
+  <%= @order.payment %>
+</p>
+
+<p>
+  <strong>Num comment:</strong>
+  <%= @order.num_comment %>
+</p>
+
+<p>
+  <strong>Num view:</strong>
+  <%= @order.num_view %>
+</p>
+
+<p>
+  <strong>Num pop:</strong>
+  <%= @order.num_pop %>
+</p>
+
+<p>
+  <strong>Order date:</strong>
+  <%= @order.order_date %>
+</p>
+
+<p>
+  <strong>Close date:</strong>
+  <%= @order.close_date %>
+</p>
+
+<p>
+  <strong>List image name:</strong>
+  <%= @order.list_image_name %>
+</p>
+
+<p>
+  <strong>List Description:</strong>
+  <%= @order.description %>
+</p>
+
+
+<%= link_to 'Edit', edit_order_path(@order) %> |
+<%= link_to 'Back', orders_path %>
+
+
+<br>
+<br>
+<br>
+<br>
+
+
+
+
+
+
+
+<div class="order-detail-item-title">
+  <%= @order.order_message %>
+</div>
+<div class="order-detail-item-image">
+  <%= image_tag @order.list_image_name %>
+</div>
+
+<div class="order-detail-description">
+  <%= escape_lf_to_br(@order.description) %>
+</div>
+
+<div class="order-detail-attribute">
+  <div class="order-detail-attribute-price">
+    商品価格帯<br>
+    270円
+  </div>
+  <div class="order-detail-attribute-target">
+    主なターゲット<br>
+    女性20代 ～ 60代
+  </div>
+</div>
+
+<div class="order-detail-contribution-area">
+  <div class="order-detail-contribution-status">
+    回答（2件）
+  </div>
+
+  <div class="order-detail-contribution">
+    <div class="order-detail-contribution-thread">
+
+      <div class="order-detail-contribution-main">
+
+        <div class="order-detail-contribution-main-message">
+          バゲットは持って帰るのが大変。フランスパンも。
+	</div>
+
+        <div class="order-detail-contribution-main-status">
+	  2015/7/8 18:23:02 by Takashi Kondoh
+	</div>
+
+      </div>
+
+      <div class="order-detail-contribution-response">
+        <div class="order-detail-contribution-response-item">
+          <div class="order-detail-contribution-response-item-main">
+            車なら大した問題じゃないよね？
+          </div>
+          <div class="order-detail-contribution-response-item-status">
+    	    2015/7/8 18:25:21 by Takashi Kondoh 2
+          </div>
+	</div>
+
+        <div class="order-detail-contribution-response-item">
+          <div class="order-detail-contribution-response-item-main">
+            車の人だけにアピールしてもしょうがないでしょ
+          </div>
+          <div class="order-detail-contribution-response-item-status">
+    	    2015/7/8 18:25:21 by Takashi Kondoh 2
+          </div>
+	</div>
+
+      </div>
+
+      <div class="order-detail-contribute-response">
+        <a href="#"">コメントを投稿</a>
+      </div>
+
+    </div>
+
+
+    <div class="order-detail-contribution-image">
+      画像を投稿<br><br>
+      <img src="/assets/noimage.png">
+        <button type="submit" name="uploadimage">ファイルを選択</button>
+    </div>
+
+  </div>
+
+
+
+
+  <div class="order-detail-contribution">
+    <div class="order-detail-contribution-thread">
+
+      <div class="order-detail-contribution-main">
+
+        <div class="order-detail-contribution-main-message">
+          バゲットは持って帰るのが大変。フランスパンも。
+	</div>
+
+        <div class="order-detail-contribution-main-status">
+	  2015/7/8 18:23:02 by Takashi Kondoh
+	</div>
+
+      </div>
+
+      <div class="order-detail-contribution-response">
+        <div class="order-detail-contribution-response-item">
+          <div class="order-detail-contribution-response-item-main">
+            車なら大した問題じゃないよね？
+          </div>
+          <div class="order-detail-contribution-response-item-status">
+    	    2015/7/8 18:25:21 by Takashi Kondoh 2
+          </div>
+	</div>
+
+        <div class="order-detail-contribution-response-item">
+          <div class="order-detail-contribution-response-item-main">
+            車の人だけにアピールしてもしょうがないでしょ
+          </div>
+          <div class="order-detail-contribution-response-item-status">
+    	    2015/7/8 18:25:21 by Takashi Kondoh 2
+          </div>
+	</div>
+
+      </div>
+
+      <div class="order-detail-contribute-response">
+        <a href="#"">コメントを投稿</a>
+      </div>
+
+    </div>
+
+
+    <div class="order-detail-contribution-image">
+      画像を投稿<br><br>
+      <img src="/assets/noimage.png">
+        <button type="submit" name="uploadimage">ファイルを選択</button>
+    </div>
+
+  </div>
+
+
+</div>
+
+
+<div class="answer-area">
+  <div>
+    <textarea name="data[Reply][body]" class="answer-textbox" placeholder="回答を入力してください" cols="30" rows="6" ></textarea>
+  </div>
+
+  <div>
+    <a href="#" class="contribute-button" ref="1" id="submit_question">回答を投稿する</a>
+    <input type="hidden" name="comment_flg" class="comment_type" value="0" id="ReplyCommentFlg">
+  </div>
+</div>
+
+

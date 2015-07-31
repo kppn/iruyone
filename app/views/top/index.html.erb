@@ -1,0 +1,229 @@
+<html>
+
+<head>
+  <link data-turbolinks-track="true" href="custom.css" media="all" rel="stylesheet" />
+  <link rel="stylesheet" type="text/css" href="custom.css">
+</head>
+
+
+<body>
+
+
+<header id="navbar" class="navbar navbar-fixed-top navbar-inverse navbar-green">
+
+  <div class="container">
+  
+    <div id="logo-box">
+      <a id="logo" href="/">いるよね.com(仮)</a>
+    </div>
+    
+    <div class="navbar-collapse collapse">
+      <a href="#" class="botton-irai">
+        <sup class="nav-new">
+          依頼する
+        </sup>
+      </a>
+      <a href="#" class="botton-irai">
+        <sup class="nav-new">
+          依頼を見る
+        </sup>
+      </a>
+    </div>
+    
+    <div class="searchBox">
+      <form action="" method="get" accept-charet="utf-8">
+        <input type="text" name="search" placeholder="依頼を検索" id="search-text-box"></input>
+          <span>
+            <button type="submit" class="btn">
+              検索
+            </button>
+          </span>
+      </form>
+    </div>
+
+    <% if login? %>
+
+      <div class="logined">
+        <ul id="menu-list" >
+          <li>
+	    <a>
+              <sup class="nav-new"> <%= current_user.name %> </sup>
+
+	      <ul class="dropdown">
+	        <li><a href="/logout">logout</a></li>
+	        <li><a href="#">dummy</a></li>
+	      </ul>
+	    </a>
+          </li>
+        </ul>
+
+      </div>
+
+    <% else %>
+
+      <div class="login">
+        <a href="/login" class="botton-login">
+          <sup class="nav-new">
+            ログイン
+          </sup>
+        </a>
+      </div>
+
+    <% end %>
+
+  </div>
+</header>
+
+
+<div class="hp-title">
+
+  <div id="hp-title-catchcopy">
+   あなたのアイディア、役に立つ
+  </div>
+  
+  <div id="hp-title-describe">
+    いるよね.com(仮)はお店のＰＯＰをみんなで作るサイトです
+  </div>
+    
+  <% if ! login? %>
+    <div id="hp-title-login">
+      登録・ログイン<br>
+      
+      <ul class="social-login">
+        <li>
+	  <%= link_to "/auth/facebook" do %>
+            <div id="social-login-list">
+	      <%= image_tag 'system_logo_facebook.png', size: '30x30' %>
+	      Facebook
+            </div>
+          <% end %>
+        </li>
+        <li>
+	  <%= link_to "/auth/twitter" do %>
+            <div id="social-login-list">
+	      <%= image_tag 'system_logo_twitter.png', size: '30x30' %>
+	      Twitter
+            </div>
+          <% end %>
+        </li>
+        <li>
+          <a href="/login/google">
+            <div id="social-login-list">
+	      <%= image_tag 'system_logo_google.png', size: '30x30' %>
+	      Google
+            </div>
+          </a> 
+        </li>
+      </ul>
+      
+      <ul id="mail-login">
+        <li> <a href="users/new"> メールアドレスでこのサイトに登録 </a></li>
+        <li> <a href="/login"> メールアドレスでログイン </a></li>
+      </ul>
+    </div>
+  <% end %>
+
+</div>
+
+
+<!--
+<div class="hp-title">
+  <div style="width=100%;">
+    あなたのアイディア、役に立つ
+  </div>
+
+  <div style="display:table; width: 100%;">
+    <div style="display:table-cell; width: 30%;">
+      いるよね.com(仮)はお店のＰＯＰをみんなで作るサイトです
+    </div>
+    <div style="display:table-cell; width: 60%;">
+      いるよね.com(仮)はお店のＰＯＰをみんなで作るサイトです
+    </div>
+  </div>
+</div>
+-->
+
+
+
+<% rowdiv_opened = 0 %>
+<% i = 0 %>
+<% @orders.each do |order| %>
+
+  <%=
+    if i % 3 == 0
+      rowdiv_opened = 1
+      raw('<div class="item-row">')
+    end
+  %>
+
+    <div class="item-column">
+      <%= link_to "/orders/#{order.id}" do %>
+        <div class="item-title">
+          <%= order.order_message %>
+        </div>
+        <div class="item-image">
+          <%= image_tag order.list_image_name, class: 'img-list' %>
+        </div>
+      <% end %>
+
+      <div class="item-status">
+          <%=
+  	  if order.status == 1 
+              raw('<div class="recruit-status-ongoing">募集中</div>')
+            else
+              raw('<div class="recruit-status-finished">終了</div>')
+  	  end
+  	%>
+        <div class="publish-date">
+         (掲載日:<%= order.order_date.strftime('%Y/%m/%d') %>, 〆切:<%= order.close_date.strftime('%Y/%m/%d') %>)
+        </div>
+        <div class="comment-view">
+          <%= order.num_comment %>comment, <%= order.num_view %>view<br>
+          POP投稿: <%= order.num_pop %>
+        </div>
+      </div>
+  
+    </div>
+
+  <%=
+    if i % 3 == 2 
+      rowdiv_opened = 0
+      raw('</div>')
+    end
+  %>
+  <% i += 1 %>
+<% end %>
+
+<%= 
+  if rowdiv_opened == 1
+    raw('</div>')
+  end
+%>
+
+
+
+
+
+<div class="footer">
+  <div>
+    <div class="question">
+      問い合わせ<br>
+      <ul class="footer-ul">
+        <li> <a href="#">利用規約</a> </li>
+        <li> <a href="#">個人情報の取り扱いについて</a> </li>
+        <li> <a href="#">問い合わせ</a> </li>
+        <li> <a href="#">運営会社</a> </li>
+      </ul>
+    </div>
+    <div class="question">
+      このサイトについて<br>
+      <ul class="footer-ul">
+        <li> <a href="#">いるよね.comとは</a> </li>
+        <li> <a href="#">よくある質問</a> </li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>
